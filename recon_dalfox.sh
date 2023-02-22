@@ -1,7 +1,7 @@
 #!/bin/bash
 
 timeout --preserve-status -k 5s 14m /go/bin/dalfox file $1 &
-dalfox_pid=$!
+dalfox_pid=$(pgrep -x dalfox)
 
 while kill -0 $dalfox_pid > /dev/null 2>&1; do
     sleep 1  # wait for 1 second
