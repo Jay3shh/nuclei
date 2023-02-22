@@ -1,8 +1,6 @@
 #!/bin/bash
 
-dalfox_command="/go/bin/dalfox file $1"
-
-$dalfox_command &
+timeout --preserve-status timeout -k 5s 14m dalfox /go/bin/dalfox file $1" &
 dalfox_pid=$!
 
 while kill -0 $dalfox_pid > /dev/null 2>&1; do
@@ -10,7 +8,7 @@ while kill -0 $dalfox_pid > /dev/null 2>&1; do
 
     if kill -0 $dalfox_pid > /dev/null 2>&1; then
         mem_usage=$(ps -o rss= -p $dalfox_pid)
-        if [[ $mem_usage -ge 400000 ]]; then
+        if [[ $mem_usage -ge 200000 ]]; then
             echo "Memory usage exceeded 400 MB. Killing dalfox process."
             kill $dalfox_pid  # kill the dalfox process
             break
