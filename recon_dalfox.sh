@@ -1,6 +1,6 @@
 #!/bin/bash
 
-timeout --preserve-status timeout -k 5s 14m dalfox /go/bin/dalfox file $1" &
+timeout --preserve-status -k 5s 14m dalfox /go/bin/dalfox file $1 &
 dalfox_pid=$!
 
 while kill -0 $dalfox_pid > /dev/null 2>&1; do
