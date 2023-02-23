@@ -24,4 +24,4 @@ while read line; do
             break
         fi
     fi
-done < <(timeout --preserve-status -k 5s 5m python XSStrike/xsstrike.py -u "$url" --skip 2>&1)
+done < <(timeout --preserve-status -k 5s 5m python XSStrike/xsstrike.py -u "$url" --skip)
