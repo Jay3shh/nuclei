@@ -4,7 +4,7 @@ for urls in $( cat $1); do
 url=$urls
 done;
 
-timeout --preserve-status -k 5s 13m python3 xsstrike.py -u "$url" --skip >> output.txt &
+timeout --preserve-status -k 5s 13m python xsstrike.py -u "$url" --skip >> output.txt &
 xsstrike_pid=$(pgrep -a "python" | grep "xsstrike.py" | grep -v "timeout" | awk '{print $1}')
 
 echo $xsstrike_pid
