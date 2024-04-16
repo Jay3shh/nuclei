@@ -6,7 +6,7 @@ else
     for sub in $( cat $1); do
         #echo "Initiating for $sub at $now" 
         #echo "[+] Starting SubFinder" &
-        /go/bin/subfinder -d $sub -t 100 -silent &
+        /go/bin/subfinder -config config.yaml -pc provider-config.yaml -d $sub -t 100 -silent &
         /go/bin/assetfinder --subs-only $sub &
         findomain --quiet -t $sub &
         wait;
